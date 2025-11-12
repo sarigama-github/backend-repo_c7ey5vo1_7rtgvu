@@ -38,6 +38,24 @@ class Product(BaseModel):
     category: str = Field(..., description="Product category")
     in_stock: bool = Field(True, description="Whether product is in stock")
 
+# Panda Vapes specific schema
+class VapeProduct(BaseModel):
+    """
+    Disposable vapes collection schema
+    Collection name: "vapeproduct"
+    """
+    title: str = Field(..., description="Product title")
+    brand: str = Field(..., description="Brand name")
+    description: Optional[str] = Field(None, description="Product description")
+    price: float = Field(..., ge=0, description="Price in USD")
+    flavor: str = Field(..., description="Flavor profile e.g., Strawberry Ice")
+    nicotine_strength: str = Field(..., description="Nicotine strength, e.g., 2%")
+    puff_count: Optional[int] = Field(None, ge=0, description="Approximate puff count")
+    image_url: Optional[str] = Field(None, description="Product image URL")
+    in_stock: bool = Field(True, description="Availability")
+    rating: Optional[float] = Field(4.5, ge=0, le=5, description="Average rating")
+    category: str = Field("disposable", description="Category")
+
 # Add your own schemas here:
 # --------------------------------------------------
 
